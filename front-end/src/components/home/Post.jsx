@@ -1,5 +1,4 @@
 import {Box,Typography,makeStyles} from '@material-ui/core';
-import { border } from '@material-ui/system';
 
 const useStyles = makeStyles({
     container:{
@@ -40,7 +39,7 @@ const Post =()=>{
    
     return(
         <Box className={classes.container}>
-        <img src={url} alt='post-image' className={classes.image}></img>
+        <img src={url} alt='wrapper' className={classes.image}></img>
         <Typography className={classes.text}>Music</Typography>
         <Typography className={classes.heading}>All about Pop Music</Typography>
         <Typography className={classes.text}>Author: Tom Hiddlestone</Typography>
