@@ -1,5 +1,5 @@
 
-import { Box, makeStyles, Button, FormControl, InputBase } from '@material-ui/core';
+import { Box, makeStyles, Button, FormControl, InputBase,TextareaAutosize } from '@material-ui/core';
 import { AddCircle } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +50,7 @@ const UpdateView = () => {
                 <Button variant='contained' color="primary">Update</Button>
             </FormControl>
 
-            <TextareaAutoSize
+            <TextareaAutosize
                 rowsMin={5}
                 placeholder='tell your story......'
                 className={classes.textarea}
@@ -58,4 +58,4 @@ const UpdateView = () => {
         </Box>
     );
 }
-export default DefaultView;
+export default UpdateView;

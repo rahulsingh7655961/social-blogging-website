@@ -1,6 +1,9 @@
-
-import { Box, makeStyles, Button, FormControl, InputBase } from '@material-ui/core';
+import { useState } from 'react';
+import { Box, makeStyles, Button, FormControl, InputBase,TextareaAutosize } from '@material-ui/core';
 import { AddCircle } from '@material-ui/icons';
+
+import {useHistory} from 'react-router-dom';
+import {createPost} from '../../service/api';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -32,13 +35,34 @@ const useStyles = makeStyles((theme) => ({
         '&:focus-visible': {
             outline: 'none'
         }
-
     }
 }));
+
+const initialValues = {
+    title:"",
+    description:"",
+    picture:"",
+    username:"Rahul",
+    categories:"All",
+    createdDate:new Date()
+
+}
 
 const CreateView = () => {
     const classes = useStyles();
     const url = 'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80';
+    const history = useHistory();
+
+    const [post,setPost] = useState(initialValues);
+
+    const handleChange = (e)=>{
+        setPost({...post, [e.target.name]:e.target.value});
+    }
+    const savePost = async() =>{
+       await createPost(post);
+       history.push('');
+    }
+
     return (
         <Box className={classes.container}>
             <img src={url} alt='banner' className={classes.image} />
@@ -46,14 +70,24 @@ const CreateView = () => {
             <FormControl className={classes.form}>
                 <AddCircle fontsize='large' color='action' />
 
-                <InputBase placeholder='Title' className={classes.textfield} />
-                <Button variant='contained' color="primary">Publish</Button>
+                <InputBase 
+                    placeholder='Title' 
+                    className={classes.textfield} 
+                    onChange = {(e) => handleChange(e)}
+                    name = 'title'
+                />
+                <Button
+                onClick={()=>savePost()} 
+                variant='contained' 
+                color="primary">Publish</Button>
             </FormControl>
 
-            <TextareaAutoSize
+            <TextareaAutosize
                 rowsMin={5}
                 placeholder='tell your story......'
                 className={classes.textarea}
+                onChange = {(e) => handleChange(e)}
+                name = 'description'
             />
         </Box>
     );
