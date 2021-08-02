@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import { Box, makeStyles, Button, FormControl, InputBase,TextareaAutosize } from '@material-ui/core';
 import { AddCircle } from '@material-ui/icons';
 
@@ -60,7 +60,7 @@ const CreateView = () => {
     }
     const savePost = async() =>{
        await createPost(post);
-       history.push('');
+       history.push('/');
     }
 
     return (

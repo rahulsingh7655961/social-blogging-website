@@ -34,19 +34,17 @@ const useStyles = makeStyles({
 
 });
 
-const Post = () => {
-    const url = 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80';
+const Post = ({post}) => {
+    const url = post.picture || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80';
     const classes = useStyles();
 
     return (
         <Box className={classes.container}>
-            <img src={url} alt='wrapper' className={classes.image}></img>
-            <Typography className={classes.text}>Music</Typography>
-            <Typography className={classes.heading}>All about Pop Music</Typography>
-            <Typography className={classes.text}>Author: Tom Hiddlestone</Typography>
-            <Typography className={classes.detail}>
-                all from pop music.
-            </Typography>
+            <img src={url} alt='post' className={classes.image}></img>
+            <Typography className={classes.text}>{post.categories}</Typography>
+            <Typography className={classes.heading}>{post.title}</Typography>
+            <Typography className={classes.text}>Author:{post.username}</Typography>
+            <Typography className={classes.detail}>{post.description}</Typography>
         </Box>
     )
 }

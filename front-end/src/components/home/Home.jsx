@@ -2,20 +2,13 @@ import Banner from './Banner';
 import Posts from './Posts'
 import Category from './Category'
 
-import {Grid, makeStyles} from '@material-ui/core';
-
-const useStyles = makeStyles({
-    component: {
-         marginTop: 50
-    }
-});
+import {Grid} from '@material-ui/core';
 
 const Home = ()=>{
-    const classes = useStyles();
     return(
         <>
         <Banner/>
-        <Grid container className={classes.component}>
+        <Grid container >
             <Grid item lg={2} xs={12} sm={2}>
                 <Category/>
             </Grid>  
